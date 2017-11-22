@@ -1,13 +1,13 @@
 
-[Understanding promises by Scotch.io ](https://scotch.io/tutorials/javascript-promises-for-dummies#comments-section)
+[Understanding promises by Scotch.io ](https://scotch.io/tutorials/javascript-promises-for-dummies)
 
 
 
-### Environment
-`Promise` is ES5 feature.
+### Environment ###
+`Promise` is ES6 feature.
 
 
-### Promise
+### Promise ###
 > Imagine, mom has promised you to buy a new phone. Now, she can fulfill or reject the promise
 
 + Three states of  **Promise** are:
@@ -66,3 +66,44 @@ var askMom = function () {
 }
 askMom();
 ```
+
+#### Promise is asynchronous ####
+
+Program will continue execution even after the promise is called. When promise object is returned it will be handled inside `.then` and `.catch` functions. 
+
+_Because, it is callback, we can enjoy asynchronous handling of promise.[i guess]_
+
+> **asynchronous**, the code will run without blocking or waiting for the result. Anything that need to wait for promise to proceed, you put that in `.then`.  
+
+### Promise in ES6 ###
+ES6 supports `Promise` natively. We can further simplify the code by using `fat-arrow, =>`, `let` and `const`.
+
+[Read this piece to understand fat arrow](https://developer.ibm.com/node/2015/09/21/an-introduction-to-javascript-es6-arrow-functions/)
+
+Gist from [article](https://strongloop.com/strongblog/es6-variable-declarations/) on **let vs const vs var**  
+
++ `var`: creates variable scope within nearest parent function
++ `let`: variable scope is to nearest block of `if` statements, `for` loops and others  
+
+    ```js
+        var x = 1;
+        if (x === 1) {
+            let y = 2;
+        }
+        console.log( y ); // y is undefined
+    ```
++ `const`: is **constant reference** to the variable. 
+    > In other words, the pointer that the variable name is using cannot change in memory, but the thing the variable points to might change.  
+
+    ```js
+        const names = [];
+        names.push( "Jordan" );  //able to add items in array, which change the value
+        console.log( names );
+        /* However, if we try to change the variable reference to a new array — even to one with 
+        the same contents — we will get a SyntaxError (“Assignment to constant variable”): */
+        const names = [];
+        names = [];  // Error! because we try to change the reference of names variable
+    ```
+    - Of course, if you have a `const` that points to a primitive such as a string or number, then there really isn’t anything to change about that value. All methods on String and Number return new values (objects).
+    - `const`  follows the same new scoping rules as `let`! 
+
