@@ -78,9 +78,46 @@ _Because, it is callback, we can enjoy asynchronous handling of promise.[i guess
 ### Promise in ES6 ###
 ES6 supports `Promise` natively. We can further simplify the code by using `fat-arrow, =>`, `let` and `const`.
 
-[Read this piece to understand fat arrow](https://developer.ibm.com/node/2015/09/21/an-introduction-to-javascript-es6-arrow-functions/)
+#### Fat Arrow in ES6 ####
+[fat arrow article](https://developer.ibm.com/node/2015/09/21/an-introduction-to-javascript-es6-arrow-functions/)  
 
-Gist from [article](https://strongloop.com/strongblog/es6-variable-declarations/) on **let vs const vs var**  
+Fat arrow, arrow functions, serve two main purpose:
++ more concise syntax
++ sharing lexical `this` with parent scope.
+
+```js
+    function (a) { return a * 2; }
+    (a) => { return a * 2; }  //because no implicit return in {}
+    (a) => a * 2
+    a => a * 2
+```
+
+Implicit return only happens for single statement.  
+
+Fat arrow share lexical `this` with parent scope.  
+It means, fat arrow, does not creates its own `this`. They also don’t have their own arguments variable like regular functions. Fat arrow can use **spread operator** when it needs to access parent arguments.  
+
+```js
+    $('.current-time').each(function () {
+    var self = this;
+
+    setInterval(function () {
+        $(self).text(Date.now());
+    }, 1000);
+    });
+
+
+    //with fat arrow, we don't have to do $self = this
+    $('.current-time').each(function(){
+        setInterval(()=> Date.now(), 1000);
+    })
+```
+
+
+
+
+#### let vs const vs var  ####
+Gist from [article](https://strongloop.com/strongblog/es6-variable-declarations/)
 
 + `var`: creates variable scope within nearest parent function
 + `let`: variable scope is to nearest block of `if` statements, `for` loops and others  
@@ -93,6 +130,7 @@ Gist from [article](https://strongloop.com/strongblog/es6-variable-declarations/
         console.log( y ); // y is undefined
     ```
 + `const`: is **constant reference** to the variable. 
+
     > In other words, the pointer that the variable name is using cannot change in memory, but the thing the variable points to might change.  
 
     ```js
