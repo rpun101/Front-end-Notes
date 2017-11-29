@@ -6,8 +6,8 @@ Here will be notes regarding the front-end technologies such as JavaScript,  ES6
 .NET techs have its own repository. 
 
 ### JavaScript ###
-+ [JavaScript Basics](javascript)
-+ [Promise](promise)
++ [JavaScript Basics](./javascript)
++ [Promise](./promise)
 
 
 
@@ -15,4 +15,4 @@ Here will be notes regarding the front-end technologies such as JavaScript,  ES6
 
 ### Node ###
 
-### [Projects](projects) ###
+### [Projects](./projects) ###
